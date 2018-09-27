@@ -6,10 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +34,7 @@ public class UsersController {
    }
 
    @RequestMapping(value = "/saveOrUpdate", method = RequestMethod.POST)
-   public @ResponseBody Map<String, Object> getSaved(Users users) {
+   public @ResponseBody Map<String, Object> getSaved(HttpServletRequest request,HttpServletResponse response,@RequestBody Users users) {
        Map<String, Object> map = new HashMap<String, Object>();
 
        if (userServices.saveOrUpdate(users)) {
@@ -63,7 +65,7 @@ public class UsersController {
    }
 
    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-   public @ResponseBody Map<String, Object> delete(Users users) {
+   public @ResponseBody Map<String, Object> delete(HttpServletRequest request,HttpServletResponse response,@RequestBody Users users) {
        Map<String, Object> map = new HashMap<String, Object>();
 
        if (userServices.delete(users)) {
@@ -100,7 +102,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value="json1",method=RequestMethod.POST)
-	public @ResponseBody List<Users> getUserInJson1(HttpServletResponse response,Users users){
+	public @ResponseBody List<Users> getUserInJson1(HttpServletRequest request,HttpServletResponse response,@RequestBody Users users){
 		List<Users> a = this.userServices.list();
 		return  a;
 	}
