@@ -46,7 +46,7 @@ public class UsersController {
    }
 
    @RequestMapping(value = "/list", method = RequestMethod.POST)
-   public @ResponseBody Map<String, Object> getAll(Users users) {
+   public @ResponseBody Map<String, Object> getAll(HttpServletRequest request,HttpServletResponse response,@RequestBody Users users) {
        Map<String, Object> map = new HashMap<String, Object>();
 
        List<Users> list = userServices.list();
@@ -75,7 +75,7 @@ public class UsersController {
 
        return map;
    }
-   
+   /*
    @RequestMapping(value = "/getList", method = RequestMethod.GET)
    public Map<String, Object> getList() {
        Map<String, Object> map = new HashMap<String, Object>();
@@ -87,7 +87,7 @@ public class UsersController {
        
          return map;
    }
-   
+   */
    /**
 	 *  返回Json的示例：/hello/json1
 	 * 
@@ -95,19 +95,23 @@ public class UsersController {
 	 *  将其响应为Json数据，因为已经在spring-mvc-servlet.xml进行配置
 	 *  
 	 */
+   /*
 	@RequestMapping(value="json1",method=RequestMethod.GET)
 	public @ResponseBody List<Users> getUserInJson1(){
 		List<Users> a = this.userServices.list();
 		return  a;
 	}
-	
+	*/
+   
+   /*
 	@RequestMapping(value="json1",method=RequestMethod.POST)
 	public @ResponseBody List<Users> getUserInJson1(HttpServletRequest request,HttpServletResponse response,@RequestBody Users users){
 		List<Users> a = this.userServices.list();
 		return  a;
 	}
+	*/
 	
-	
+   /*
 	@RequestMapping(value="json2",method=RequestMethod.POST)
 	public @ResponseBody Map<String, Object> getUserInJson2(Users users){
 	    Map<String, Object> map = new HashMap<String, Object>();
@@ -119,7 +123,7 @@ public class UsersController {
 
 	    return map;
 	}
-
+*/
 	
 	
 }
